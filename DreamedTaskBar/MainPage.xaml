@@ -1,0 +1,147 @@
+﻿<Page
+    x:Class="DreamTaskbar.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:DreamTaskbar"
+    xmlns:views="using:DreamTaskbar.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    <Page.Resources>
+        <Thickness x:Key="FlyoutContentThemePadding">0</Thickness>
+        <x:Double x:Key="TaskBarHeight">40</x:Double>
+        <GridLength x:Key="TaskBarContainerHeight">40</GridLength>
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="{StaticResource TaskBarContainerHeight}"/>
+        </Grid.RowDefinitions>
+        <Rectangle Grid.RowSpan="2">
+            <Rectangle.Fill>
+                <ImageBrush ImageSource="/Assets/Background/ColorfulBackground.jpg" Stretch="UniformToFill"/>
+            </Rectangle.Fill>
+        </Rectangle>
+        <Grid Grid.Row="1" Background="{ThemeResource SystemControlAcrylicElementBrush}">
+            <Grid.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource SimpleRevealButtonStyle}">
+                    <Setter Property="VerticalAlignment" Value="Stretch"/>
+                    <Setter Property="FontSize" Value="14"/>
+                    <Setter Property="Padding" Value="5,0,5,0"/>
+                </Style>
+                <Style TargetType="FontIcon" BasedOn="{StaticResource FabricExtFontIcon}">
+                </Style>
+            </Grid.Resources>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Left">
+                <Button MinWidth="{StaticResource TaskBarHeight}">
+                    <FontIcon Style="{StaticResource MaterialDesignFontIcon}" Glyph="蘒" FontSize="20"/>
+                </Button>
+                <Button MinWidth="{StaticResource TaskBarHeight}">
+                    <FontIcon Glyph=""/>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button ToolTipService.ToolTip="Show hidden icons">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" FontSize="12" Margin="2,0,2,0" Glyph=""/>
+                    </Button.Content>
+                    <Button.Flyout>
+                        <Flyout>
+                            <StackPanel Orientation="Vertical">
+                                <StackPanel.Resources>
+                                    <Style TargetType="Button" BasedOn="{StaticResource SimpleRevealButtonStyle}">
+                                        <Setter Property="VerticalAlignment" Value="Stretch"/>
+                                        <Setter Property="FontSize" Value="14"/>
+                                        <Setter Property="Padding" Value="5,0,5,0"/>
+                                        <Setter Property="Width" Value="40"/>
+                                        <Setter Property="Height" Value="40"/>
+                                    </Style>
+                                    <Style TargetType="FontIcon" BasedOn="{StaticResource FabricExtFontIcon}">
+                                    </Style>
+                                </StackPanel.Resources>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button>
+                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    </Button>
+                                    <Button>
+                                        <FontIcon Glyph=""/>
+                                    </Button>
+                                    <Button>
+                                        <FontIcon Glyph="לּ" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    </Button>
+                                </StackPanel>
+                                <StackPanel Orientation="Horizontal">
+                                    <Button>
+                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    </Button>
+                                    <Button >
+                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    </Button>
+                                    <Button>
+                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    </Button>
+                                </StackPanel>
+                            </StackPanel>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button ToolTipService.ToolTip="Bluetooth">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE702;"/>
+                    </Button.Content>
+                    <Button.Flyout>
+                        <Flyout>
+                            <views:BluetoothPeekUserControl/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button ToolTipService.ToolTip="Windows Security Center">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                </Button>
+                <Button ToolTipService.ToolTip="Safely Remove Hardware and Eject Media">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                </Button>
+                <Button ToolTipService.ToolTip="Your Phone">
+                    <Button.Content>
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                    </Button.Content>
+                    <Button.Flyout>
+                        <Flyout>
+                            <views:PhonePeekUserControl/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button ToolTipService.ToolTip="Microsoft Account Center">
+                    <FontIcon Style="{StaticResource MaterialDesignFontIcon}" Glyph=""/>
+                </Button>
+                <Button ToolTipService.ToolTip="Fully Charged: 100%">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                </Button>
+                <Button ToolTipService.ToolTip="Speakers: 100%">
+                    <FontIcon Glyph=""/>
+                </Button>
+                <Button ToolTipService.ToolTip="Connected to Hatchery">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
+                </Button>
+                <Button MinWidth="0" Content="ENG" ToolTipService.ToolTip="English (US)"/>
+                <Button MinWidth="0" Margin="2,0,2,0" Padding="10,0,10,0">
+                    <StackPanel>
+                        <TextBlock FontSize="12" Text="12:00" TextAlignment="Center" ToolTipService.ToolTip="12:00"/>
+                        <TextBlock FontSize="12" Text="10/26/2019" TextAlignment="Center"/>
+                    </StackPanel>
+                </Button>
+                <Button MinWidth="40" ToolTipService.ToolTip="No new notifications">
+                    <FontIcon Style="{StaticResource FabricExtFontIcon}" Glyph=""/>
+                </Button>
+                <Rectangle VerticalAlignment="Stretch" Width="1" Fill="{ThemeResource PanelBorderBrush}"/>
+                <Button/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Page>
