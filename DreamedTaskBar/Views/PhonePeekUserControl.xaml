@@ -73,12 +73,6 @@
             </ListView.ItemTemplate>-->
         </ListView>
         <StackPanel Grid.Row="3" Margin="12">
-            <Button Style="{StaticResource SoftRevealButtonStyle}" HorizontalAlignment="Stretch" Visibility="Collapsed">
-                <StackPanel Orientation="Horizontal" Spacing="10">
-                    <FontIcon Glyph=""/>
-                    <TextBlock Text="Add a bluetooth device"/>
-                </StackPanel>
-            </Button>
             <HyperlinkButton HorizontalAlignment="Center">
                 <TextBlock Text="Open Your Phone App" TextAlignment="Center"/>
             </HyperlinkButton>

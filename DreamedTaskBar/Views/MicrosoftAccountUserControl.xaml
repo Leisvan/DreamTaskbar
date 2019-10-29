@@ -6,11 +6,96 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    MinHeight="480" 
-    MinWidth="260" 
-    d:DesignWidth="400">
-
+    MinHeight="480"
+    Width="300"
+    d:DesignHeight="500">
+    <UserControl.Resources>
+        <ControlTemplate x:Name="ScrollViewerScrollBarlessTemplate" TargetType="ScrollViewer">
+            <Grid Background="{TemplateBinding Background}">
+                <ScrollContentPresenter x:Name="ScrollContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}"/>
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <StackPanel Orientation="Horizontal" Spacing="10" Margin="12,12,12,0">
+                <Ellipse Width="40" Height="40">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="/Assets/Account/AccountPicture.png"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+                <StackPanel Orientation="Vertical">
+                    <TextBlock Text="Leisvan Cordero" FontSize="18" Style="{StaticResource TitleTextBlockStyle}"/>
+                    <TextBlock Text="reallycool@outlook.com" FontSize="12" Foreground="{ThemeResource SecondaryForegroundBrush}"/>
+                </StackPanel>
+            </StackPanel>
+        </Grid>
+        <Pivot Grid.Row="1">
+            <PivotItem>
+                <PivotItem.Header>
+                    <Grid>
+                        <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                    </Grid>
+                </PivotItem.Header>
+                <PivotItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <ListView/>
+                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                                        <FontIcon Glyph="" FontSize="8" Style="{StaticResource FabricExtFontIcon}"/>
+                                    </StackPanel>
+                                </Button.Content>
+                                <Button.Flyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Text="Pause syncing:" IsEnabled="False" Width="120"/>
+                                        <MenuFlyoutItem Text="2 hours"/>
+                                        <MenuFlyoutItem Text="8 hours"/>
+                                        <MenuFlyoutItem Text="24 hours"/>
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
 
+                        </StackPanel>
+                    </Grid>
+                </PivotItem.Content>
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <Grid>
+                        <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                    </Grid>
+                </PivotItem.Header>
+            </PivotItem>
+            <PivotItem>
+                <PivotItem.Header>
+                    <Grid>
+                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                    </Grid>
+                </PivotItem.Header>
+            </PivotItem>
+        </Pivot>
     </Grid>
 </UserControl>

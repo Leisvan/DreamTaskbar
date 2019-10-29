@@ -13,7 +13,6 @@
     d:DesignWidth="400">
     <UserControl.Resources>
         <vm:BluetoothPeekViewModel x:Key="BluetoothPeekViewModel"/>
-       
     </UserControl.Resources>
 
     <Grid DataContext="{StaticResource BluetoothPeekViewModel}">

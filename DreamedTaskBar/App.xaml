@@ -14,6 +14,9 @@
                     <Style x:Key="ContentStretchListViewItemStyle" TargetType="ListViewItem" BasedOn="{StaticResource ListViewItemRevealStyle}">
                         <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
                     </Style>
+                    <Style TargetType="FontIcon">
+                        <Setter Property="FontSize" Value="{StaticResource IconElementFontSize}"/>
+                    </Style>
                     <Style x:Key="FabricExtFontIcon" TargetType="FontIcon">
                         <Setter Property="FontFamily" Value="ms-appx:///Assets/Fonts/FabExMDL2.ttf#Fabric External MDL2 Assets"/>
                         <Setter Property="FontSize" Value="{StaticResource IconElementFontSize}"/>
