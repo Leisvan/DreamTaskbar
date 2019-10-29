@@ -19,6 +19,7 @@ namespace DreamTaskbar.Views
 {
     public sealed partial class MicrosoftAccountUserControl : UserControl
     {
+
         public MicrosoftAccountUserControl()
         {
             this.InitializeComponent();

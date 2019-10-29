@@ -5,16 +5,14 @@
     xmlns:local="using:DreamTaskbar.Views"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:DreamTaskbar.ViewModels"
+    xmlns:models="using:DreamTaskbar.Models"
     mc:Ignorable="d"
     MinHeight="480"
     Width="300"
     d:DesignHeight="500">
     <UserControl.Resources>
-        <ControlTemplate x:Name="ScrollViewerScrollBarlessTemplate" TargetType="ScrollViewer">
-            <Grid Background="{TemplateBinding Background}">
-                <ScrollContentPresenter x:Name="ScrollContentPresenter" ContentTemplate="{TemplateBinding ContentTemplate}" Margin="{TemplateBinding Padding}"/>
-            </Grid>
-        </ControlTemplate>
+        <vm:MicrosoftAccountViewModel x:Key="MicrosoftAccountViewModel"/>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -35,7 +33,7 @@
             </StackPanel>
         </Grid>
         <Pivot Grid.Row="1">
-            <PivotItem>
+            <PivotItem Margin="0">
                 <PivotItem.Header>
                     <Grid>
                         <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
@@ -47,7 +45,34 @@
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <ListView/>
+                        <ListView Margin="0,5,0,0"
+                                  ItemsSource="{Binding SyncingFiles, Source={StaticResource MicrosoftAccountViewModel}}" 
+                                  ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="models:ExtendedBundle">
+                                    <Grid Margin="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto" MinWidth="28"/>
+                                        </Grid.ColumnDefinitions>
+                                        <FontIcon Glyph="{x:Bind IconInfo}" Style="{StaticResource FabricExtFontIcon}" FontSize="24" VerticalAlignment="Center" />
+                                        <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical">
+                                            <TextBlock Text="{x:Bind Title}" FontSize="12"/>
+                                            <StackPanel Orientation="Horizontal" Spacing="3">
+                                                <TextBlock Text="{x:Bind Subtitle}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
+                                                <HyperlinkButton Padding="0">
+                                                    <TextBlock Text="{x:Bind Caption}" Style="{StaticResource CaptionTextBlockStyle}"/>
+                                                </HyperlinkButton>
+                                            </StackPanel>
+                                            <TextBlock Text="{x:Bind StatusText}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
+                                        </StackPanel>
+                                            <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="14" Foreground="{ThemeResource SecondaryForegroundBrush}" Style="{StaticResource FabricExtFontIcon}"/>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
                                 <Button.Content>
