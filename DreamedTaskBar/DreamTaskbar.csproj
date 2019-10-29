@@ -7,8 +7,8 @@
     <ProjectGuid>{C458D648-6427-419D-8F3F-616C29A3C0CC}</ProjectGuid>
     <OutputType>AppContainerExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>DreamedTaskBar</RootNamespace>
-    <AssemblyName>DreamedTaskBar</AssemblyName>
+    <RootNamespace>DreamTaskbar</RootNamespace>
+    <AssemblyName>DreamTaskbar</AssemblyName>
     <DefaultLanguage>en-US</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion Condition=" '$(TargetPlatformVersion)' == '' ">10.0.18362.0</TargetPlatformVersion>
@@ -128,6 +128,9 @@
     <Compile Include="Views\BluetoothPeekUserControl.xaml.cs">
       <DependentUpon>BluetoothPeekUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\MicrosoftAccountUserControl.xaml.cs">
+      <DependentUpon>MicrosoftAccountUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PhonePeekUserControl.xaml.cs">
       <DependentUpon>PhonePeekUserControl.xaml</DependentUpon>
     </Compile>
@@ -204,6 +207,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\BluetoothPeekUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MicrosoftAccountUserControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

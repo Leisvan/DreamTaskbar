@@ -31,8 +31,7 @@
                     <Setter Property="FontSize" Value="14"/>
                     <Setter Property="Padding" Value="5,0,5,0"/>
                 </Style>
-                <Style TargetType="FontIcon" BasedOn="{StaticResource FabricExtFontIcon}">
-                </Style>
+                <Style TargetType="FontIcon" BasedOn="{StaticResource FabricExtFontIcon}"/>
             </Grid.Resources>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
@@ -118,7 +117,14 @@
                     </Button.Flyout>
                 </Button>
                 <Button ToolTipService.ToolTip="Microsoft Account Center">
-                    <FontIcon Style="{StaticResource MaterialDesignFontIcon}" Glyph=""/>
+                    <Button.Content>
+                        <FontIcon Style="{StaticResource MaterialDesignFontIcon}" Glyph=""/>
+                    </Button.Content>
+                    <Button.Flyout>
+                        <Flyout>
+                            <views:MicrosoftAccountUserControl/>
+                        </Flyout>
+                    </Button.Flyout>
                 </Button>
                 <Button ToolTipService.ToolTip="Fully Charged: 100%">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
