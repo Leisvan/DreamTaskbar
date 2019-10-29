@@ -146,7 +146,7 @@
                     <FontIcon Style="{StaticResource FabricExtFontIcon}" Glyph=""/>
                 </Button>
                 <Rectangle VerticalAlignment="Stretch" Width="1" Fill="{ThemeResource PanelBorderBrush}"/>
-                <Button/>
+                <Button Padding="1"/>
             </StackPanel>
         </Grid>
     </Grid>

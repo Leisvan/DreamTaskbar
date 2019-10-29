@@ -119,10 +119,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\IconTitleSubtitleBundle.cs" />
+    <Compile Include="Models\CommonInfoBundle.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Models\ExtendedBundle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\BluetoothPeekViewModel.cs" />
     <Compile Include="ViewModels\MicrosoftAccountViewModel.cs" />

@@ -2,21 +2,20 @@
 
 namespace DreamTaskbar.Models
 {
-    public class IconTitleSubtitleBundle
+    public class CommonInfoBundle
     {
-        public string Glyph { get; set; }
+        public string IconInfo { get; set; }
         public string Title { get; set; }
         public string Subtitle { get; set; }
-        public string StatusGlyph { get; set; }
+        public string StatusIconInfo { get; set; }
         public string StatusText { get; set; }
 
-
-        public IconTitleSubtitleBundle(string glyph, string title, string subtitle = null, string statusGlyph = null, string statusText=null)
+        public CommonInfoBundle(string infoInfo, string title, string subtitle = null, string statusIconInfo = null, string statusText=null)
         {
-            Glyph = glyph;
+            IconInfo = infoInfo;
             Title = title;
             Subtitle = subtitle;
-            StatusGlyph = statusGlyph;
+            StatusIconInfo = statusIconInfo;
             StatusText = statusText;
         }
     }

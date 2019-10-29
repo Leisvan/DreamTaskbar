@@ -40,20 +40,20 @@
                   ItemsSource="{Binding BluetoothDevices}" 
                   ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}">
             <ListView.ItemTemplate>
-                <DataTemplate x:DataType="models:IconTitleSubtitleBundle">
+                <DataTemplate x:DataType="models:CommonInfoBundle">
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
                             <ColumnDefinition/>
                             <ColumnDefinition Width="Auto" MinWidth="28"/>
                         </Grid.ColumnDefinitions>
-                        <FontIcon Glyph="{x:Bind Glyph}" FontSize="20" VerticalAlignment="Top" Margin="0,5,0,0"/>
+                        <FontIcon Glyph="{x:Bind IconInfo}" FontSize="20" VerticalAlignment="Top" Margin="0,5,0,0"/>
                         <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical">
                             <TextBlock Text="{x:Bind Title}" FontSize="12"/>
                             <TextBlock Text="{x:Bind Subtitle}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
                         </StackPanel>
                         <StackPanel Grid.Column="2" Margin="5,0,5,0">
-                            <FontIcon Glyph="{x:Bind StatusGlyph}" FontSize="14" Foreground="{ThemeResource SecondaryForegroundBrush}"/>
+                            <FontIcon Glyph="{x:Bind StatusIconInfo}" FontSize="14" Foreground="{ThemeResource SecondaryForegroundBrush}"/>
                             <TextBlock FontSize="10" Text="{x:Bind StatusText}" Foreground="{ThemeResource SecondaryForegroundBrush}"/>
                         </StackPanel>
                     </Grid>
