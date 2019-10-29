@@ -42,12 +42,13 @@
                 <PivotItem.Content>
                     <Grid>
                         <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <ListView Margin="0,5,0,0"
+                        <ListView Grid.Row="1" Margin="0,5,0,0"
                                   ItemsSource="{Binding SyncingFiles, Source={StaticResource MicrosoftAccountViewModel}}" 
-                                  ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}">
+                                  ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}" Grid.RowSpan="2">
                             <ListView.ItemTemplate>
                                 <DataTemplate x:DataType="models:ExtendedBundle">
                                     <Grid Margin="4">
@@ -67,13 +68,13 @@
                                             </StackPanel>
                                             <TextBlock Text="{x:Bind StatusText}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
                                         </StackPanel>
-                                            <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="14" Foreground="{ThemeResource SecondaryForegroundBrush}" Style="{StaticResource FabricExtFontIcon}"/>
+                                        <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="14" Foreground="{ThemeResource SecondaryForegroundBrush}" Style="{StaticResource FabricExtFontIcon}"/>
 
                                     </Grid>
                                 </DataTemplate>
                             </ListView.ItemTemplate>
                         </ListView>
-                        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal" Spacing="5">
@@ -113,6 +114,74 @@
                         <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
                     </Grid>
                 </PivotItem.Header>
+                <PivotItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <ListView Grid.Row="1" Margin="0,5,0,0"
+                                  ItemsSource="{Binding SyncingFiles, Source={StaticResource MicrosoftAccountViewModel}}" 
+                                  ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}" Grid.RowSpan="2">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="models:ExtendedBundle">
+                                    <Grid Margin="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto" MinWidth="28"/>
+                                        </Grid.ColumnDefinitions>
+                                        <FontIcon Glyph="{x:Bind IconInfo}" Style="{StaticResource FabricExtFontIcon}" FontSize="24" VerticalAlignment="Center" />
+                                        <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical">
+                                            <TextBlock Text="{x:Bind Title}" FontSize="12"/>
+                                            <StackPanel Orientation="Horizontal" Spacing="3">
+                                                <TextBlock Text="{x:Bind Subtitle}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
+                                                <HyperlinkButton Padding="0">
+                                                    <TextBlock Text="{x:Bind Caption}" Style="{StaticResource CaptionTextBlockStyle}"/>
+                                                </HyperlinkButton>
+                                            </StackPanel>
+                                            <TextBlock Text="{x:Bind StatusText}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
+                                        </StackPanel>
+                                        <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="14" Foreground="{ThemeResource SecondaryForegroundBrush}" Style="{StaticResource FabricExtFontIcon}"/>
+
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <Button.Content>
+                                    <StackPanel Orientation="Horizontal" Spacing="5">
+                                        <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                                        <FontIcon Glyph="" FontSize="8" Style="{StaticResource FabricExtFontIcon}"/>
+                                    </StackPanel>
+                                </Button.Content>
+                                <Button.Flyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Text="Pause syncing:" IsEnabled="False" Width="120"/>
+                                        <MenuFlyoutItem Text="2 hours"/>
+                                        <MenuFlyoutItem Text="8 hours"/>
+                                        <MenuFlyoutItem Text="24 hours"/>
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
+
+                        </StackPanel>
+                    </Grid>
+                </PivotItem.Content>
             </PivotItem>
             <PivotItem>
                 <PivotItem.Header>
