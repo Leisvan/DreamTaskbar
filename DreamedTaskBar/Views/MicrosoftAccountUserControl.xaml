@@ -7,12 +7,29 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm="using:DreamTaskbar.ViewModels"
     xmlns:models="using:DreamTaskbar.Models"
+    xmlns:converters="using:DreamTaskbar.Views.Converters"
     mc:Ignorable="d"
     MinHeight="480"
     Width="300"
     d:DesignHeight="500">
     <UserControl.Resources>
         <vm:MicrosoftAccountViewModel x:Key="MicrosoftAccountViewModel"/>
+        <converters:ResourceNameToSolidColorBrushConverter x:Key="ResourceNameToSolidColorBrushConverter"/>
+        <DataTemplate x:Key="OneDriveFilesTemplate" x:DataType="models:ExtendedBundle">
+            <Grid Margin="4">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition Width="Auto" MinWidth="28"/>
+                </Grid.ColumnDefinitions>
+                <FontIcon Glyph="{x:Bind IconInfo}" Style="{StaticResource FabricExtFontIcon}" Foreground="{Binding SupportResources, Converter={StaticResource ResourceNameToSolidColorBrushConverter}}" FontSize="24" VerticalAlignment="Center" />
+                <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical">
+                    <TextBlock Text="{x:Bind Title}" FontSize="12"/>
+                    <TextBlock Text="{x:Bind Subtitle}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
+                </StackPanel>
+                <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="12" Foreground="{ThemeResource SecondaryForegroundBrush}" />
+            </Grid>
+        </DataTemplate>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -46,6 +63,7 @@
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+                        <TextBlock Margin="15,5,5,0" Text="OneDrive is up to date" FontSize="12" Foreground="{ThemeResource SecondaryForegroundBrush}"/>
                         <ListView Grid.Row="1" Margin="0,5,0,0"
                                   ItemsSource="{Binding SyncingFiles, Source={StaticResource MicrosoftAccountViewModel}}" 
                                   ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}" Grid.RowSpan="2">
@@ -68,7 +86,7 @@
                                             </StackPanel>
                                             <TextBlock Text="{x:Bind StatusText}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
                                         </StackPanel>
-                                        <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="14" Foreground="{ThemeResource SecondaryForegroundBrush}" Style="{StaticResource FabricExtFontIcon}"/>
+                                        <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="12" Foreground="{ThemeResource SecondaryForegroundBrush}" Style="{StaticResource FabricExtFontIcon}"/>
 
                                     </Grid>
                                 </DataTemplate>
@@ -92,7 +110,7 @@
                                 </Button.Flyout>
                             </Button>
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
-                                <FontIcon Glyph="" Foreground="#FF0078d4" Style="{StaticResource FabricExtFontIcon}"/>
+                                <FontIcon Glyph="" Foreground="{ThemeResource OneDriveForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                             </Button>
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
                                 <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
@@ -118,94 +136,80 @@
                     <Grid>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
+                        <TextBlock Text="Pinned files" FontSize="12" Margin="15,5,5,0" Foreground="{ThemeResource SecondaryForegroundBrush}"/>
                         <ListView Grid.Row="1" Margin="0,5,0,0"
-                                  ItemsSource="{Binding SyncingFiles, Source={StaticResource MicrosoftAccountViewModel}}" 
-                                  ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}" Grid.RowSpan="2">
-                            <ListView.ItemTemplate>
-                                <DataTemplate x:DataType="models:ExtendedBundle">
-                                    <Grid Margin="4">
-                                        <Grid.ColumnDefinitions>
-                                            <ColumnDefinition Width="Auto"/>
-                                            <ColumnDefinition/>
-                                            <ColumnDefinition Width="Auto" MinWidth="28"/>
-                                        </Grid.ColumnDefinitions>
-                                        <FontIcon Glyph="{x:Bind IconInfo}" Style="{StaticResource FabricExtFontIcon}" FontSize="24" VerticalAlignment="Center" />
-                                        <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical">
-                                            <TextBlock Text="{x:Bind Title}" FontSize="12"/>
-                                            <StackPanel Orientation="Horizontal" Spacing="3">
-                                                <TextBlock Text="{x:Bind Subtitle}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
-                                                <HyperlinkButton Padding="0">
-                                                    <TextBlock Text="{x:Bind Caption}" Style="{StaticResource CaptionTextBlockStyle}"/>
-                                                </HyperlinkButton>
-                                            </StackPanel>
-                                            <TextBlock Text="{x:Bind StatusText}" Style="{StaticResource CaptionTextBlockStyle}" Opacity=".5"/>
-                                        </StackPanel>
-                                        <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="14" Foreground="{ThemeResource SecondaryForegroundBrush}" Style="{StaticResource FabricExtFontIcon}"/>
-
-                                    </Grid>
-                                </DataTemplate>
-                            </ListView.ItemTemplate>
+                                  ItemsSource="{Binding OfficePinnedFiles, Source={StaticResource MicrosoftAccountViewModel}}" 
+                                  ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}"
+                                  ItemTemplate="{StaticResource OneDriveFilesTemplate}">
                         </ListView>
-                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
+                        <TextBlock Grid.Row="2" Text="Recent files" FontSize="12" Margin="15,5,5,0" Foreground="{ThemeResource SecondaryForegroundBrush}"/>
+                        <ListView Grid.Row="3" Margin="0,5,0,0"
+                                  ItemsSource="{Binding OfficeRecentFiles, Source={StaticResource MicrosoftAccountViewModel}}" 
+                                  ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}"
+                                  ItemTemplate="{StaticResource OneDriveFilesTemplate}">
+                        </ListView>
+                        <StackPanel Grid.Row="4" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
                                 <Button.Content>
                                     <StackPanel Orientation="Horizontal" Spacing="5">
-                                        <FontIcon Glyph="" Foreground="#FFd53a00" Style="{StaticResource FabricExtFontIcon}"/>
-                                        <FontIcon Glyph="" FontSize="8" Foreground="#FFd53a00" Style="{StaticResource FabricExtFontIcon}"/>
+                                        <FontIcon Glyph="" Foreground="{ThemeResource OfficeForeground}" Style="{StaticResource FabricExtFontIcon}"/>
+                                        <FontIcon Glyph="" FontSize="8" Foreground="{ThemeResource OfficeForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                                     </StackPanel>
                                 </Button.Content>
                                 <Button.Flyout>
                                     <MenuFlyout>
                                         <MenuFlyoutItem Text="Word document">
                                             <MenuFlyoutItem.Icon>
-                                                <FontIcon Glyph="" Foreground="#FF2b7cd3" Style="{StaticResource FabricExtFontIcon}"/>
+                                                <FontIcon Glyph="" Foreground="{ThemeResource WordForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                                             </MenuFlyoutItem.Icon>
                                         </MenuFlyoutItem>
                                         <MenuFlyoutItem Text="Excel workbook">
                                             <MenuFlyoutItem.Icon>
-                                                <FontIcon Glyph="" Foreground="#FF21a366" Style="{StaticResource FabricExtFontIcon}"/>
+                                                <FontIcon Glyph="" Foreground="{ThemeResource ExcelForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                                             </MenuFlyoutItem.Icon>
                                         </MenuFlyoutItem>
                                         <MenuFlyoutItem Text="PowerPoint presentation">
                                             <MenuFlyoutItem.Icon>
-                                                <FontIcon Glyph="" Foreground="#FFd35230" Style="{StaticResource FabricExtFontIcon}"/>
+                                                <FontIcon Glyph="" Foreground="{ThemeResource PowerPointForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                                             </MenuFlyoutItem.Icon>
                                         </MenuFlyoutItem>
                                         <MenuFlyoutItem Text="Forms survey">
                                             <MenuFlyoutItem.Icon>
-                                                <FontIcon Glyph="" Foreground="#FF37c6d0" Style="{StaticResource FabricExtFontIcon}"/>
+                                                <FontIcon Glyph="" Foreground="{ThemeResource FormsForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                                             </MenuFlyoutItem.Icon>
                                         </MenuFlyoutItem>
                                         <MenuFlyoutItem Text="Forms quiz">
                                             <MenuFlyoutItem.Icon>
-                                                <FontIcon Glyph="" Foreground="#FF37c6d0" Style="{StaticResource FabricExtFontIcon}"/>
+                                                <FontIcon Glyph="" Foreground="{ThemeResource FormsForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                                             </MenuFlyoutItem.Icon>
                                         </MenuFlyoutItem>
                                         <MenuFlyoutItem Text="Sway page">
                                             <MenuFlyoutItem.Icon>
-                                                <FontIcon Glyph="" Foreground="#FF029986" Style="{StaticResource FabricExtFontIcon}"/>
+                                                <FontIcon Glyph="" Foreground="{ThemeResource SwayForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                                             </MenuFlyoutItem.Icon>
                                         </MenuFlyoutItem>
                                     </MenuFlyout>
                                 </Button.Flyout>
                             </Button>
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
-                                <FontIcon Glyph="" Foreground="#FF2b7cd3" Style="{StaticResource FabricExtFontIcon}"/>
+                                <FontIcon Glyph="" Foreground="{ThemeResource WordForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                             </Button>
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
-                                <FontIcon Glyph="" Foreground="#FF21a366" Style="{StaticResource FabricExtFontIcon}"/>
+                                <FontIcon Glyph="" Foreground="{ThemeResource ExcelForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                             </Button>
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
-                                <FontIcon Glyph="" Foreground="#FFd35230" Style="{StaticResource FabricExtFontIcon}"/>
+                                <FontIcon Glyph="" Foreground="{ThemeResource PowerPointForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                             </Button>
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
-                                <FontIcon Glyph="" Foreground="#FFca64ea" Style="{StaticResource FabricExtFontIcon}"/>
+                                <FontIcon Glyph="" Foreground="{ThemeResource OneNoteForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                             </Button>
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
-                                <FontIcon Glyph="" Foreground="#FFd53a00" Style="{StaticResource FabricExtFontIcon}"/>
+                                <FontIcon Glyph="" Foreground="{ThemeResource OfficeForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                             </Button>
 
                         </StackPanel>

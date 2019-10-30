@@ -39,10 +39,10 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Left">
                 <Button MinWidth="{StaticResource TaskBarHeight}">
-                    <FontIcon Style="{StaticResource MaterialDesignFontIcon}" Glyph="蘒" FontSize="20"/>
+                    <FontIcon Glyph="" FontSize="20"/>
                 </Button>
                 <Button MinWidth="{StaticResource TaskBarHeight}">
-                    <FontIcon Glyph=""/>
+                    <FontIcon Glyph="" Style="{x:Null}"/>
                 </Button>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
@@ -69,7 +69,7 @@
                                         <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
                                     </Button>
                                     <Button>
-                                        <FontIcon Glyph=""/>
+                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
                                     </Button>
                                     <Button>
                                         <FontIcon Glyph="לּ" Style="{StaticResource MaterialDesignFontIcon}"/>
