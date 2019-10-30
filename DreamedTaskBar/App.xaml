@@ -18,7 +18,7 @@
                         <Setter Property="FontSize" Value="{StaticResource IconElementFontSize}"/>
                     </Style>
                     <Style x:Key="FabricExtFontIcon" TargetType="FontIcon">
-                        <Setter Property="FontFamily" Value="ms-appx:///Assets/Fonts/FabExMDL2.ttf#Fabric External MDL2 Assets"/>
+                        <Setter Property="FontFamily" Value="ms-appx:///Assets/Fonts/FabExMDL2.ttf#Fabric MDL2 Assets"/>
                         <Setter Property="FontSize" Value="{StaticResource IconElementFontSize}"/>
                     </Style>
                     <Style x:Key="MaterialDesignFontIcon" TargetType="FontIcon">

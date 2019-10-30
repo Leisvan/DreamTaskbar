@@ -22,9 +22,11 @@ namespace DreamTaskbar.ViewModels
         }
         public void LoadTestData()
         {
+            //OneDrive Syncing Files
             SyncingFiles.Add(new ExtendedBundle("", "DSC1951.jpg", "Uploaded to", "Camera", "", "3h ago"));
             SyncingFiles.Add(new ExtendedBundle("", "DSC1952.jpg", "Uploaded to", "Camera", "", "3h ago"));
             SyncingFiles.Add(new ExtendedBundle("", "DSC1953.jpg", "Uploaded to", "Camera", "", "3h ago"));
+            SyncingFiles.Add(new ExtendedBundle("", "Last report.docx", "Uploaded to", "Documents", "", "6h ago"));
         }
     }
 }
