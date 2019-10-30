@@ -8,6 +8,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <XamlControlsResources xmlns="using:Microsoft.UI.Xaml.Controls" />
+                <!--Don't add any dictionary before this one-->
                 <ResourceDictionary>
                     <SolidColorBrush x:Key="NullBackground"></SolidColorBrush>
                     <x:Double x:Key="IconElementFontSize">16</x:Double>
@@ -222,7 +223,7 @@
                     <Style x:Key="SimpleRevealButtonStyle" TargetType="Button">
                         <Setter Property="Background" Value="{StaticResource NullBackground}"/>
                         <Setter Property="Foreground" Value="{ThemeResource PrimaryForegroundBrush}"/>
-                        
+
                         <Setter Property="BorderThickness" Value="{ThemeResource AppBarToggleButtonRevealBorderThemeThickness}" />
                         <Setter Property="Padding" Value="8"/>
                         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -277,7 +278,6 @@
                         </Setter>
                     </Style>
                 </ResourceDictionary>
-                
             </ResourceDictionary.MergedDictionaries>
             <ResourceDictionary.ThemeDictionaries>
                 <ResourceDictionary x:Key="Light">
@@ -293,7 +293,7 @@
                     <Color x:Key="TitleBarButtonForeground">#242424</Color>
                     <Color x:Key="TitleBarButtonHoverBackground">White</Color>
                     <Color x:Key="TitleBarButtonHoverForeground">#242424</Color>
-                    <!--Office-->
+                    <!--Account Center-->
                     <SolidColorBrush x:Key="OfficeForeground" Color="#d53a00"/>
                     <SolidColorBrush x:Key="WordForeground" Color="#185abd"/>
                     <SolidColorBrush x:Key="ExcelForeground" Color="#107c41"/>
@@ -301,7 +301,10 @@
                     <SolidColorBrush x:Key="OneNoteForeground" Color="#7719aa"/>
                     <SolidColorBrush x:Key="FormsForeground" Color="#038387"/>
                     <SolidColorBrush x:Key="SwayForeground" Color="#008272"/>
+                    <SolidColorBrush x:Key="SkypeForeground" Color="#0088ca"/>
                     <SolidColorBrush x:Key="OneDriveForeground" Color="#0364b8"/>
+                    <SolidColorBrush x:Key="WindowsForeground" Color="#0078d7"/>
+                    <SolidColorBrush x:Key="EdgeCanaryForeground" Color="#dfa200"/>
                     <!--Other-->
                     <Thickness x:Key="FlyoutContentThemePadding">0</Thickness>
                 </ResourceDictionary>
@@ -318,7 +321,7 @@
                     <Color x:Key="TitleBarButtonForeground">#dcdcdc</Color>
                     <Color x:Key="TitleBarButtonHoverBackground">#262626</Color>
                     <Color x:Key="TitleBarButtonHoverForeground">#dcdcdc</Color>
-                    <!--Office-->
+                    <!--Account Center-->
                     <SolidColorBrush x:Key="OfficeForeground" Color="#ca4412"/>
                     <SolidColorBrush x:Key="WordForeground" Color="#2b7cd3"/>
                     <SolidColorBrush x:Key="ExcelForeground" Color="#21a366"/>
@@ -326,7 +329,10 @@
                     <SolidColorBrush x:Key="OneNoteForeground" Color="#ca64ea"/>
                     <SolidColorBrush x:Key="FormsForeground" Color="#37c6d0"/>
                     <SolidColorBrush x:Key="SwayForeground" Color="#029986"/>
+                    <SolidColorBrush x:Key="SkypeForeground" Color="#00b7f0"/>
                     <SolidColorBrush x:Key="OneDriveForeground" Color="#0078d4"/>
+                    <SolidColorBrush x:Key="WindowsForeground" Color="#0078d7"/>
+                    <SolidColorBrush x:Key="EdgeCanaryForeground" Color="#ffb900"/>
                     <!--Other-->
                     <Thickness x:Key="FlyoutContentThemePadding">0</Thickness>
                 </ResourceDictionary>

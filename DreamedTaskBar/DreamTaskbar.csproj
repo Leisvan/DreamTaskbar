@@ -125,6 +125,7 @@
     </Compile>
     <Compile Include="Models\ExtendedBundle.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\GlyphEncoder.cs" />
     <Compile Include="Services\ResourceLocator.cs" />
     <Compile Include="ViewModels\BluetoothPeekViewModel.cs" />
     <Compile Include="ViewModels\MicrosoftAccountViewModel.cs" />
@@ -132,6 +133,7 @@
     <Compile Include="Views\BluetoothPeekUserControl.xaml.cs">
       <DependentUpon>BluetoothPeekUserControl.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Converters\EncodedGlyphToFontIconConverter.cs" />
     <Compile Include="Views\Converters\ResourceNameToSolidColorBrushConverter.cs" />
     <Compile Include="Views\MicrosoftAccountUserControl.xaml.cs">
       <DependentUpon>MicrosoftAccountUserControl.xaml</DependentUpon>

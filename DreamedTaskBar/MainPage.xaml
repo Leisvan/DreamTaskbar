@@ -39,10 +39,10 @@
             </Grid.ColumnDefinitions>
             <StackPanel Orientation="Horizontal" Spacing="2" HorizontalAlignment="Left">
                 <Button MinWidth="{StaticResource TaskBarHeight}">
-                    <FontIcon Glyph="" FontSize="20"/>
+                    <FontIcon Glyph="" FontSize="18"/>
                 </Button>
                 <Button MinWidth="{StaticResource TaskBarHeight}">
-                    <FontIcon Glyph="" Style="{x:Null}"/>
+                    <FontIcon Glyph="" FontSize="18" Style="{x:Null}"/>
                 </Button>
             </StackPanel>
             <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">

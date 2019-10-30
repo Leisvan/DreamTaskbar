@@ -26,5 +26,17 @@ namespace DreamTaskbar.Services
             resource = (result) ? (T)themeDictionary[key] : default;
             return result;
         }
+        public static bool GetResource<T>(string key, out T resource)
+        {
+            if (string.IsNullOrEmpty(key))
+            {
+                resource = default;
+                return false;
+            }
+            var appResources = Application.Current.Resources.MergedDictionaries[1];
+            bool result = appResources.ContainsKey(key);
+            resource = (result) ? (T)appResources[key] : default;
+            return result;
+        }
     }
 }

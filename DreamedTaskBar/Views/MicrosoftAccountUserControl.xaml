@@ -15,6 +15,7 @@
     <UserControl.Resources>
         <vm:MicrosoftAccountViewModel x:Key="MicrosoftAccountViewModel"/>
         <converters:ResourceNameToSolidColorBrushConverter x:Key="ResourceNameToSolidColorBrushConverter"/>
+        <converters:EncodedGlyphToFontIconConverter x:Key="EncodedGlyphToFontIconConverter"/>
         <DataTemplate x:Key="OneDriveFilesTemplate" x:DataType="models:ExtendedBundle">
             <Grid Margin="4">
                 <Grid.ColumnDefinitions>
@@ -209,6 +210,9 @@
                                 <FontIcon Glyph="" Foreground="{ThemeResource OneNoteForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                             </Button>
                             <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph="" Foreground="{ThemeResource SkypeForeground}" Style="{StaticResource FabricExtFontIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
                                 <FontIcon Glyph="" Foreground="{ThemeResource OfficeForeground}" Style="{StaticResource FabricExtFontIcon}"/>
                             </Button>
 
@@ -216,12 +220,73 @@
                     </Grid>
                 </PivotItem.Content>
             </PivotItem>
-            <PivotItem>
+            <PivotItem Margin="0">
                 <PivotItem.Header>
                     <Grid>
                         <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
                     </Grid>
                 </PivotItem.Header>
+                <PivotItem.Content>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <TextBlock Margin="15,5,5,0" Text="Account Notifications" HorizontalAlignment="Left" FontSize="12" Foreground="{ThemeResource SecondaryForegroundBrush}"/>
+                        <FontIcon Glyph="" HorizontalAlignment="Right" FontSize="12" Margin="0,5,15,0"/>
+                        <ListView Grid.Row="1" Margin="0,5,0,0"
+                                  ItemsSource="{Binding AccountNotifications, Source={StaticResource MicrosoftAccountViewModel}}" 
+                                  ItemContainerStyle="{StaticResource ContentStretchListViewItemStyle}">
+                            <ListView.ItemTemplate>
+                                <DataTemplate x:DataType="models:ExtendedBundle">
+                                    <Grid Margin="4">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition/>
+                                            <ColumnDefinition Width="Auto" MinWidth="28"/>
+                                        </Grid.ColumnDefinitions>
+                                        <ContentControl VerticalAlignment="Center" Content="{x:Bind IconInfo, Converter={StaticResource EncodedGlyphToFontIconConverter}, ConverterParameter=24}" 
+                                                        Foreground="{Binding SupportResources, Converter={StaticResource ResourceNameToSolidColorBrushConverter}}"/>
+                                        <StackPanel Grid.Column="1" Margin="10,0,0,0" Orientation="Vertical" Spacing="2">
+                                            <TextBlock FontSize="12" TextWrapping="WrapWholeWords">
+                                                <Run Text="{x:Bind Title}" />
+                                                <Run Text="{x:Bind Subtitle}" FontWeight="SemiBold"/>
+                                            </TextBlock>
+                                            <TextBlock FontSize="10">
+                                                <Run Text="{x:Bind Caption}"/>
+                                                <Run Text=" · "/>
+                                                <Run Text="{x:Bind StatusText}"/>
+                                            </TextBlock>
+                                        </StackPanel>
+                                        <FontIcon Grid.Column="2" Glyph="{x:Bind StatusIconInfo}" FontSize="12" Foreground="{ThemeResource SecondaryForegroundBrush}" />
+                                    </Grid>
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
+                        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,5">
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph="" Style="{StaticResource FabricExtFontIcon}"/>
+                            </Button>
+                            <Button Style="{StaticResource SimpleRevealButtonStyle}">
+                                <FontIcon Glyph=""/>
+                            </Button>
+
+                        </StackPanel>
+                    </Grid>
+                </PivotItem.Content>
             </PivotItem>
         </Pivot>
     </Grid>
