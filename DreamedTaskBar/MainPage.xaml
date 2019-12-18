@@ -100,6 +100,9 @@
                         </Flyout>
                     </Button.Flyout>
                 </Button>
+                <Button x:Name="WhatsNewButton" ToolTipService.ToolTip="Update installed successfully" Click="WhatsNewClick">
+                    <FontIcon Glyph="" Foreground="#FFCA6E0A"/>
+                </Button>
                 <Button ToolTipService.ToolTip="Windows Security Center">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
                 </Button>
@@ -126,6 +129,7 @@
                         </Flyout>
                     </Button.Flyout>
                 </Button>
+                
                 <Button ToolTipService.ToolTip="Fully Charged: 100%">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
                 </Button>

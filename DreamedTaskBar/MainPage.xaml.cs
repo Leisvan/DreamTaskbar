@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DreamTaskbar.Views;
+using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
@@ -66,6 +67,13 @@ namespace DreamTaskbar
             string themeKey = isLightTheme ? "Light" : "Dark";
             var themeDictionary = (ResourceDictionary)Application.Current.Resources.ThemeDictionaries[themeKey];
             return (T)themeDictionary[resKey];
+        }
+
+        private async void WhatsNewClick(object sender, RoutedEventArgs e)
+        {
+            WhatsNewButton.Visibility = Visibility.Collapsed;
+            WhatsNewDialog dialog = new WhatsNewDialog();
+            await dialog.ShowAsync();
         }
     }
 }
