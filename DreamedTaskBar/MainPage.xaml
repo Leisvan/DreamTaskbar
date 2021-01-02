@@ -65,25 +65,25 @@
                                     </Style>
                                 </StackPanel.Resources>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button>
-                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    <Button ToolTipService.ToolTip="Discord">
+                                        <FontIcon Glyph="󰙯" Style="{StaticResource MaterialDesignFontIcon}"/>
                                     </Button>
-                                    <Button>
-                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    <Button ToolTipService.ToolTip="Spotify">
+                                        <FontIcon Glyph="󰓇" Style="{StaticResource MaterialDesignFontIcon}"/>
                                     </Button>
-                                    <Button>
-                                        <FontIcon Glyph="לּ" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    <Button ToolTipService.ToolTip="Steam">
+                                        <FontIcon Glyph="󰓓" Style="{StaticResource MaterialDesignFontIcon}"/>
                                     </Button>
                                 </StackPanel>
                                 <StackPanel Orientation="Horizontal">
-                                    <Button>
-                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    <Button ToolTipService.ToolTip="Safely Remove Hardware and Eject Media">
+                                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
                                     </Button>
-                                    <Button >
-                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    <Button ToolTipService.ToolTip="OneDrive">
+                                        <FontIcon Glyph="󰏊" Style="{StaticResource MaterialDesignFontIcon}"/>
                                     </Button>
-                                    <Button>
-                                        <FontIcon Glyph="" Style="{StaticResource MaterialDesignFontIcon}"/>
+                                    <Button ToolTipService.ToolTip="Windows Security Center">
+                                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
                                     </Button>
                                 </StackPanel>
                             </StackPanel>
@@ -103,12 +103,6 @@
                 <Button x:Name="WhatsNewButton" ToolTipService.ToolTip="Update installed successfully" Click="WhatsNewClick">
                     <FontIcon Glyph="" Foreground="#FFCA6E0A"/>
                 </Button>
-                <Button ToolTipService.ToolTip="Windows Security Center">
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
-                </Button>
-                <Button ToolTipService.ToolTip="Safely Remove Hardware and Eject Media">
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
-                </Button>
                 <Button ToolTipService.ToolTip="Your Phone">
                     <Button.Content>
                         <FontIcon FontFamily="Segoe MDL2 Assets" Glyph=""/>
@@ -121,7 +115,18 @@
                 </Button>
                 <Button ToolTipService.ToolTip="Microsoft Account Center">
                     <Button.Content>
-                        <FontIcon Style="{StaticResource MaterialDesignFontIcon}" Glyph=""/>
+                        <FontIcon Style="{StaticResource MaterialDesignFontIcon}" Glyph="󰍲"/>
+                    </Button.Content>
+                    <Button.Flyout>
+                        <Flyout>
+                            <views:MicrosoftAccountUserControl/>
+                        </Flyout>
+                    </Button.Flyout>
+                </Button>
+                <Button ToolTipService.ToolTip="Microsoft Account Center">
+                    <Button.Content>
+                        <FontIcon Style="{StaticResource MaterialDesignFontIcon}" 
+                                  Glyph="󰭠" Foreground="#FF2682ae"/>
                     </Button.Content>
                     <Button.Flyout>
                         <Flyout>
